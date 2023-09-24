@@ -65,6 +65,7 @@ const TableFuncionarios = ({ users, setUsers, setOnEdit }) => {
     <Table>
       <Thead>
         <Tr>
+          {/* //nome em ordem alfabetica */}
           <Th>Nome</Th>
           <Th>Email</Th>
           <Th onlyWeb>Fone</Th>
