@@ -10,7 +10,7 @@ app.use(cors())
 
 app.use("/", userRoutes)
 
-app.listen(33360) // Porta 8800
+app.listen(8800) // Porta 8800
 
 // message conexao com o banco de dados
 db.connect((err) => {
