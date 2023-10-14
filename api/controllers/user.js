@@ -1,5 +1,7 @@
-import {db} from "../db.js";
-export const getUsers = (_, res) => {
+const db = require("../db");
+
+
+const getUsers = (_, res) => {
   const q = "SELECT * FROM usuarios";
 
   db.query(q, (err, data) => {
@@ -9,7 +11,7 @@ export const getUsers = (_, res) => {
   });
 };
 
-export const addUser = (req, res) => {
+const addUser = (req, res) => {
     const q =
       "INSERT INTO usuarios(`nome`, `email`, `fone`, `data_nascimento`, `data_entrada`) VALUES (?, ?, ?, ?, ?)";
     
@@ -29,7 +31,7 @@ export const addUser = (req, res) => {
   };
   
 
-  export const updateUser = (req, res) => {
+  const updateUser = (req, res) => {
     const q =
       "UPDATE usuarios SET `nome` = ?, `email` = ?, `fone` = ?, `data_nascimento` = ?, `data_entrada` = ? WHERE `id` = ?";
   
@@ -51,7 +53,7 @@ export const addUser = (req, res) => {
   
 
 
-export const deleteUser = (req, res) => {
+const deleteUser = (req, res) => {
   const q = "DELETE FROM usuarios WHERE `id` = ?";
 
   db.query(q, [req.params.id], (err) => {
@@ -59,4 +61,11 @@ export const deleteUser = (req, res) => {
 
     return res.status(200).json("Usuário deletado com sucesso.");
   });
+};
+
+module.exports = {
+  getUsers,
+  addUser,
+  updateUser,
+  deleteUser,
 };

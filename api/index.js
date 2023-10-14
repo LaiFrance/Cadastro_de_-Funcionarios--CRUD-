@@ -1,21 +1,20 @@
-import express from "express"
-import {db} from "./db.js"
-import userRoutes from "./routes/users.js"
-import cors from "cors"
+const express = require('express')
 
+const cors = require('cors')
+const router = require('./routes/users')
+const dotenv = require('dotenv')
 const app = express()
 
-app.use(express.json())
+
+
+const port = process.env.DB_PORT || 8800;
+
+dotenv.config()
+
 app.use(cors())
+app.use(express.json())
+app.use('/', router)
 
-app.use("/", userRoutes)
-
-app.listen(8800) // Porta 8800
-
-// message conexao com o banco de dados
-db.connect((err) => {
-    if (err) {
-        console.log("Erro ao conectar ao banco de dados");
-    }
-    console.log("Conectado ao banco de dados");
-});
+app.listen( port, () => {
+    console.log(`Server running on port ${port}`)
+})
