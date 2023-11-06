@@ -49,8 +49,6 @@ const Form = ({ onEdit, setOnEdit, getUsers }) => {
       user.nome.value = onEdit.nome
       user.email.value = onEdit.email
       user.fone.value = onEdit.fone
-      user.data_nascimento.value = onEdit.data_nascimento
-      user.data_entrada.value = onEdit.data_entrada
     }
   }, [onEdit])
 
@@ -62,12 +60,12 @@ const Form = ({ onEdit, setOnEdit, getUsers }) => {
     if (
       !user.nome.value ||
       !user.email.value ||
-      !user.fone.value ||
-      !user.data_nascimento.value ||
-      !user.data_entrada.value
-    ) {
-      return toast.error('Preencha todos os campos.')
+      !user.fone.value 
+      )
+     {
+      return toast.error('Preencha todos os campos!')
     }
+
 
     if (onEdit) {
       await axios
@@ -75,8 +73,7 @@ const Form = ({ onEdit, setOnEdit, getUsers }) => {
           nome: user.nome.value,
           email: user.email.value,
           fone: user.fone.value,
-          data_nascimento: user.data_nascimento.value,
-          data_entrada: user.data_entrada.value,
+          
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data))
@@ -86,8 +83,7 @@ const Form = ({ onEdit, setOnEdit, getUsers }) => {
           nome: user.nome.value,
           email: user.email.value,
           fone: user.fone.value,
-          data_nascimento: user.data_nascimento.value,
-          data_entrada: user.data_entrada.value,
+          
         })
         .then(({ data }) => toast.success(data))
         .catch(({ data }) => toast.error(data))
@@ -96,8 +92,7 @@ const Form = ({ onEdit, setOnEdit, getUsers }) => {
     user.nome.value = ''
     user.email.value = ''
     user.fone.value = ''
-    user.data_nascimento.value = ''
-    user.data_entrada.value = ''
+    
 
     setOnEdit(null)
     getUsers()
@@ -116,14 +111,6 @@ const Form = ({ onEdit, setOnEdit, getUsers }) => {
       <InputArea>
         <Label>Telefone</Label>
         <Input name="fone" />
-      </InputArea>
-      <InputArea>
-        <Label>Data de Nascimento</Label>
-        <Input name="data_nascimento" type="date" />
-      </InputArea>
-      <InputArea>
-        <Label>Data de Entrada</Label>
-        <Input name="data_entrada" type="date" />
       </InputArea>
 
       <Button type="submit">SALVAR</Button>

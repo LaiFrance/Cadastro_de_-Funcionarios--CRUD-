@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
 import { toast } from 'react-toastify'
+import BuscarEmpresas from './BuscarEmpresas'
 
 const FormContainer = styled.form`
   display: flex;
@@ -37,7 +38,9 @@ const Button = styled.button`
   background-color: #2c73d2;
   color: white;
   height: 42px;
+
 `
+
 
   const EmpresaForm = ({ onEdit, setOnEdit, getEmpresas }) => {
     const ref = useRef(null)
@@ -119,37 +122,43 @@ const Button = styled.button`
       }
 
     return (
-        <FormContainer ref={ref} onSubmit={handleSubmit}>
-            <InputArea>
-                <Label>Nome da Empresa</Label>
-                <Input type="text" name="nome_empresa" />
-            </InputArea>
-            <InputArea>
-                <Label>CNPJ</Label>
-                <Input type="text" name="cnpj" />
-            </InputArea>
-            <InputArea>
-                <Label>CEP</Label>
-                <Input type="text" name="cep" />
-            </InputArea>
-            <InputArea>
-                <Label>Endereço</Label>
-                <Input type="text" name="endereco" />
-            </InputArea>
-            <InputArea>
-                <Label>Número</Label>
-                <Input type="text" name="numero" />
-            </InputArea>
-            <InputArea>
-                <Label>Telefone</Label>
-                <Input type="text" name="telefone" />
-            </InputArea>
-            <InputArea>
-                <Label>Email</Label>
-                <Input type="text" name="email" />
-            </InputArea>
-            <Button onSubmit={handleSubmit}>Salvar</Button>
-        </FormContainer>
+        <><div>
+        <h4>Buscar Empresa</h4>
+        <BuscarEmpresas
+          getEmpresas={getEmpresas} />
+      </div><FormContainer ref={ref} onSubmit={handleSubmit}>
+
+          <InputArea>
+            <Label>Nome da Empresa</Label>
+            <Input type="text" name="nome_empresa" />
+          </InputArea>
+          <InputArea>
+            <Label>CNPJ</Label>
+            <Input type="text" name="cnpj" />
+          </InputArea>
+          <InputArea>
+            <Label>CEP</Label>
+            <Input type="text" name="cep" />
+          </InputArea>
+          <InputArea>
+            <Label>Endereço</Label>
+            <Input type="text" name="endereco" />
+          </InputArea>
+          <InputArea>
+            <Label>Número</Label>
+            <Input type="text" name="numero" />
+          </InputArea>
+          <InputArea>
+            <Label>Telefone</Label>
+            <Input type="text" name="telefone" />
+          </InputArea>
+          <InputArea>
+            <Label>Email</Label>
+            <Input type="text" name="email" />
+          </InputArea>
+          <Button onSubmit={handleSubmit}>Salvar</Button>
+
+        </FormContainer></>
     )
 }
 

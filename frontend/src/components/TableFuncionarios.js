@@ -69,8 +69,6 @@ const TableFuncionarios = ({ users, setUsers, setOnEdit }) => {
           <Th>Nome</Th>
           <Th>Email</Th>
           <Th onlyWeb>Fone</Th>
-          <Th> Data Nascimento</Th>
-          <Th>Entrada</Th>
           <Th></Th>
           <Th></Th>
         </Tr>
@@ -83,14 +81,7 @@ const TableFuncionarios = ({ users, setUsers, setOnEdit }) => {
             <Td width="15%" onlyWeb>
               {item.fone}
             </Td>
-            <Td width="20%" onlyWeb>
-              {item.data_nascimento &&
-                new Date(item.data_nascimento).toLocaleDateString('pt-BR')}
-            </Td>
-            <Td width="20%" onlyWeb>
-              {item.data_entrada &&
-                new Date(item.data_entrada).toLocaleDateString('pt-BR')}
-            </Td>
+           
             <Td alignCenter width="8%" onlyWeb>
               <FaEdit onClick={() => handleEdit(item)} />
             </Td>
