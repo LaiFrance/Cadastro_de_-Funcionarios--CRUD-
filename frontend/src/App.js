@@ -10,6 +10,8 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import TableEmpresas from './components/TableEmpresas.js'
 import EmpresaForm from './components/EmpresaForm.js'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
 
 const Container = styled.div`
   width: 100%;
@@ -61,36 +63,30 @@ function App() {
   
   return (
     <>
-      <>
-        <Header />
-        <Container>
-          <Title>Cadastro de Funcionários</Title>
-          <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
-          <TableFuncionarios
-            setOnEdit={setOnEdit}
-            users={users}
-            setUsers={setUsers}
-          />
-        </Container>
-        <Container>
-          <Title>Cadastro de Empresas</Title>
-          <EmpresaForm onEdit={onEdit} setOnEdit={setOnEdit} getEmpresas={getEmpresas} />
-          <TableEmpresas
-            setOnEdit={setOnEdit}
-            empresas={empresas}
-            setEmpresas={setEmpresas}
-          />
-        </Container>
-
-        <ToastContainer
-          autoClose={3000}
-          position={toast.POSITION.BOTTOM_LEFT}
-        />
-        <GlobalStyle />
-        <Footer />
-      </>
-    </>
-  )
+    <Header />  
+    <Router>
+  <Routes>
+    <Route path="/" element={  
+      <Container>
+        <Title>Cadastro de Funcionários</Title>
+        <Form onEdit={onEdit} setOnEdit={setOnEdit} getUsers={getUsers} />
+        <TableFuncionarios setOnEdit={setOnEdit} users={users} setUsers={setUsers} />
+      </Container>
+    } />
+    <Route path="/empresa" element={  
+      <Container>
+        <Title>Cadastro de Empresas</Title>
+        <EmpresaForm onEdit={onEdit} setOnEdit={setOnEdit} getEmpresas={getEmpresas} />
+        <TableEmpresas setOnEdit={setOnEdit} empresas={empresas} setEmpresas={setEmpresas} />
+      </Container>
+    } />
+  </Routes>
+</Router>
+    <ToastContainer autoClose={3000} position={toast.POSITION.BOTTOM_LEFT} />
+    <GlobalStyle />
+    <Footer />
+  </>
+)
 }
 
 export default App

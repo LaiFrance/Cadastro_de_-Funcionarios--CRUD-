@@ -17,7 +17,7 @@ const HeaderContainer = styled.header`
 const Header = () => {
   return (
     <HeaderContainer>
-      <h1>Funcionários</h1>
+      <h1> Sistema de Cadastro </h1>
     </HeaderContainer>
   )
 }
