@@ -1,6 +1,7 @@
 const db = require("../db");
 
 
+
 const getUsers = (_, res) => {
   const q = "SELECT * FROM usuarios";
 
